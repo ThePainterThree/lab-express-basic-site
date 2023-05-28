@@ -1,25 +1,28 @@
 const express = require('express');
 const app = express();
-const port = 3001;
+const port = 3000;
 const path = require('path')
 
 app.use('/', express.static(path.join(__dirname, 'public')))
 
 
+
 app.get("/", (req, res) => {
-    res.send("Welcome");
+  res.sendFile(`${__dirname}/views/index.html`)
   });
 
   app.get("/about", (req, res) => {
-    res.send("About");
+    res.sendFile(`${__dirname}/views/about.html`)
   });
 
-  app.get("/works", (req, res) => {
-    res.send("Works");
+  app.get("/work", (req, res) => {
+      res.sendFile(path.join(__dirname, 'views', 'work.html'));
+    //res.sendFile(`${__dirname}/views/work.html`)
+    
   });
 
   app.get("/gallery", (req, res) => {
-    res.send("Gallery");
+    res.sendFile(`${__dirname}/views/gallery.html`)
   });
 
   app.listen(port, () => console.log(`App is listening to the port ${port}`));
